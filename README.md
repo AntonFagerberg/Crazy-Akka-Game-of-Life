@@ -1,10 +1,11 @@
 # (Crazy) Akka Game of Life
+(All of this was written before I really knew anything about Akka so the design is terrible!)
+
 As the title says, this is a crazy implementation of Conway's Game of Life using Akka and Scala. The goal of this implementation was:
  * Use a lot of Actors.
  * Use lots of Futures.
  * Avoid using matrix look-ups for calculating cell neighbours.
  * Not be practical or pragmatic.
- * Achieve good performance (if I had access to a super computer).
 
 ## How does it work?
 First off, we have the World which is the main supervisor Actor. It will create one cell Actor for each cell and one Checker Actor for each Cell.
