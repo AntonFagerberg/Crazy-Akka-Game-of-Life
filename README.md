@@ -24,7 +24,7 @@ Each iteration goes like this:
  * After every Cell has responded, the World will display the result in the GUI and then go again.
 
 ## So why is this crazy?
-Well, lets say you want to go with a 100 x 100 grid for the Game of Life. This might result in one thread for the World, one thread for each Cell 100*100 = 10,000, one thread for each Checker = 10,000. So we may en up with 20,001 threads. On top of this, each Checker may create 8 Futures and the World may create up to 10,000 Futures at a time - so in a weird worst case scenario, we'll need about 100,000 threads. Your OS and the JVM might have a thing or two to say about this. So ok, you may not end up with 100,000 threads since every actor will probably not consume one thread - but you will end up with a sh*t load of Futures and this will result in way too many threads.
+Well, since the design is terrible and I didn’t know what I was doing when I wrote it.
 
 I had a go with a grid of 120x75 which results in 18,001 Actors and it worked fine for about 30 seconds before the thread allocation limit was reached and everything crashed (video: http://instagram.com/p/dMFn6aA7-X/).
 
